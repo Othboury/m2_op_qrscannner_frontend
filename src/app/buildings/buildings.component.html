@@ -1,0 +1,23 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id Buiding</th>
+                <th>Building</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let building of buildings">
+                <td>{{building.id}}</td>
+                <td>{{building.name}}</td>
+                <td>
+                    <a href="#!update/{{ building.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(building.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

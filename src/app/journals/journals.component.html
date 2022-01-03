@@ -1,0 +1,25 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id Journal</th>
+                <th>Date</th>
+                <th>Utilisateur </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let journal of journals">
+                <td>{{journal.id}}</td>
+                <td>{{journal.date}}</td>
+                <td>{{journal.idUser}}</td>
+                <td>
+                    <a href="#!update/{{ journal.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(journal.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,33 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id Materiel</th>
+                <th>Catégorie</th>
+                <th>Code Barre </th>
+                <th>Nom matériel </th>
+                <th>Salle </th>
+                <th>Good Place </th>
+                <th>Moved </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let materiel of materiels">
+                <td>{{materiel.id}}</td>
+                <td>{{materiel.idCategory}}</td>
+                <td>{{materiel.codeBarre}}</td>
+                <td>{{materiel.name}}</td>
+                <td>{{materiel.salle}}</td>
+                <td>{{materiel.goodplace}}</td>
+                <td>{{materiel.moved}}</td>
+                <td>
+                    <a href="#!update/{{ materiel.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(materiel.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

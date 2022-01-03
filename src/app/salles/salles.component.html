@@ -1,0 +1,27 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id Salle</th>
+                <th>Building</th>
+                <th>Etage </th>
+                <th>Name Salle </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let salle of salles">
+                <td>{{salle.id}}</td>
+                <td>{{salle.building}}</td>
+                <td>{{salle.floor}}</td>
+                <td>{{salle.name}}</td>
+                <td>
+                    <a href="#!update/{{ salle.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(salle.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

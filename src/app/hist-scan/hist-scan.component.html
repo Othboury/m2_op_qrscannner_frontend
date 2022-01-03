@@ -1,0 +1,29 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id Scan</th>
+                <th>Utilisateur </th>
+                <th>Materiel</th>
+                <th>Journal</th>
+                <th>Salle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let scan of scans">
+                <td>{{scan.id}}</td>
+                <td>{{scan.user}}</td>
+                <td>{{scan.materiel}}</td>
+                <td>{{scan.journal}}</td>
+                <td>{{scan.salle}}</td>
+                <td>
+                    <a href="#!update/{{ scan.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(scan.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

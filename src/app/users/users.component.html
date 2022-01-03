@@ -1,0 +1,26 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </header>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email </th>
+                <th>id </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <a href="#!update/{{ user.id }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(user.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
