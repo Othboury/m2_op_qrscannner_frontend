@@ -11,8 +11,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let category of categories">
-                <td>{{category.id}}</td>
-                <td>{{category.name}}</td>
+                <td>{{category.idCategory}}</td>
+                <td>{{category.nameCategory}}</td>
                 <td>
                     <a href="#!update/{{ category.id }}" class="btn btn-default btn-sm">Edit</a>
                     <button class="btn-danger" id="remove" (click)="remove(category.id)">Delete</button>

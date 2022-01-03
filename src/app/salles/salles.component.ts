@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-salles',
@@ -11,7 +12,7 @@ export class SallesComponent implements OnInit {
 
   salles :any = [] ; 
 
-  constructor(private httpClient  : HttpClient ,private router : Router) { }
+  constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
     this.httpClient.get<any>("http://localhost:8091/salles").subscribe((res)=>{

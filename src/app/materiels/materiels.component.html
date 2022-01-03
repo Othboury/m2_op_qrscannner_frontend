@@ -16,16 +16,19 @@
         </thead>
         <tbody>
             <tr *ngFor="let materiel of materiels">
-                <td>{{materiel.id}}</td>
-                <td>{{materiel.idCategory}}</td>
-                <td>{{materiel.codeBarre}}</td>
-                <td>{{materiel.name}}</td>
-                <td>{{materiel.salle}}</td>
-                <td>{{materiel.goodplace}}</td>
+                <td>{{materiel.idMateriel}}</td>
+                <td>{{materiel.idCategory.nameCategory}}</td>
+                <td>{{materiel.codeBarreMateriel}}</td>
+                <td>{{materiel.nameMateriel}}</td>
+                <td>{{materiel.salleInitial.nameSalle}}</td>
+                <td>{{materiel.inGoodPlace}}</td>
                 <td>{{materiel.moved}}</td>
                 <td>
-                    <a href="#!update/{{ materiel.id }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(materiel.id)">Delete</button>
+                    <button class="btn-default" id="move" (click)="moved(materiel.idMateriel)">Déplacer</button>
+                </td>
+                <td>
+                    <a href="#!update/{{ materiel.idMateriel }}" class="btn btn-default btn-sm">Modifier</a>
+                    <button class="btn-danger" id="remove" (click)="remove(materiel.idMateriel)">Supprimer</button>
                 </td>
             </tr>
         </tbody>

@@ -13,13 +13,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let salle of salles">
-                <td>{{salle.id}}</td>
-                <td>{{salle.building}}</td>
-                <td>{{salle.floor}}</td>
-                <td>{{salle.name}}</td>
+                <td>{{salle.idSalle}}</td>
+                <td>{{salle.buildingSalle}}</td>
+                <td>{{salle.floorSalle}}</td>
+                <td>{{salle.nameSalle}}</td>
                 <td>
-                    <a href="#!update/{{ salle.id }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(salle.id)">Delete</button>
+                    <a href="#!update/{{ salle.idSalle }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(salle.idSalle)">Delete</button>
                 </td>
             </tr>
         </tbody>

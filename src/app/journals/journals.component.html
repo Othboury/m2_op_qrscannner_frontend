@@ -12,12 +12,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let journal of journals">
-                <td>{{journal.id}}</td>
-                <td>{{journal.date}}</td>
-                <td>{{journal.idUser}}</td>
+                <td>{{journal.idJournal}}</td>
+                <td>{{journal.dateJournal}}</td>
+                <td>{{journal.idUser.emailUser}}</td>
                 <td>
-                    <a href="#!update/{{ journal.id }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(journal.id)">Delete</button>
+                    <a href="#!update/{{ journal.idJournal }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(journal.idJournal)">Delete</button>
                 </td>
             </tr>
         </tbody>

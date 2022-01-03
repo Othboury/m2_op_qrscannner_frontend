@@ -14,14 +14,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let scan of scans">
-                <td>{{scan.id}}</td>
-                <td>{{scan.user}}</td>
-                <td>{{scan.materiel}}</td>
-                <td>{{scan.journal}}</td>
-                <td>{{scan.salle}}</td>
+                <td>{{scan.idScan}}</td>
+                <td>{{scan.idUser.emailUser}}</td>
+                <td>{{scan.idMateriel.idMateriel}}</td>
+                <td>{{scan.idJournal.idJournal}}</td>
+                <td>{{scan.idSalle.nameSalle}}</td>
                 <td>
-                    <a href="#!update/{{ scan.id }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(scan.id)">Delete</button>
+                    <a href="#!update/{{ scan.idScan }}" class="btn btn-default btn-sm">Edit</a>
+                    <button class="btn-danger" id="remove" (click)="remove(scan.idScan)">Delete</button>
                 </td>
             </tr>
         </tbody>

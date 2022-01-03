@@ -25,7 +25,7 @@ const appRoutes  : Routes = [
   {path : "" , component : AuthComponent } , 
   {path : "scan" , component : ScanComponent },
   {path : "salles" , component : SallesComponent },
-  {path : "buildings" , component : BuildingsComponent } ,
+  {path : "hist-scan" , component : HistScanComponent } ,
   {path : "categories" , component : CategoriesComponent }, 
   {path : "materiels" , component : MaterielsComponent } ,
   {path : "journals" , component : JournalsComponent } 
