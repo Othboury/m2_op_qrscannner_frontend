@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 
 @Component({
   selector: 'app-materiels',
@@ -9,11 +11,20 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./materiels.component.css']
 })
 export class MaterielsComponent implements OnInit {
+  @ViewChild('sample')
+  listObj!: DropDownListComponent;
   materiels :any = [] ; 
+  categories :any = [] ;
+  salles :any = [] ;
   mat :any = [];
   material : any = [];
+  val : any;
+  text : any;
   item :any = []
   qrInfo:string ="";
+  fields: Object = { text: ',nameSalle', value: 'idSalle' };
+  height: string = '220px';
+  waterMark: string = 'Selectionner une salle';
 
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
@@ -24,6 +35,31 @@ export class MaterielsComponent implements OnInit {
         });
   }
 
+  getCat(){
+    this.httpClient.get<any>("http://localhost:8091/categories").subscribe((resCat)=>{
+      console.log(resCat);
+      this.categories = resCat ; 
+  });
+  return this.categories;
+  }
+
+  getSalles(){
+    this.httpClient.get<any>("http://localhost:8091/salles").subscribe((resSalles)=>{
+        console.log(resSalles);
+        this.salles = resSalles ; 
+    });
+    return this.salles;
+  }
+
+  sallesData: Object[] =this.getSalles() ;
+
+  public onChange(args: any): void {
+    this.val = document.getElementById('value');
+    this.text = document.getElementById('text');
+    this.val.innerHTML = this.listObj.value.toString();
+    this.text.innerHTML = this.listObj.text;
+}
+
   singlematerial(id: any){
     this.httpClient.get<any>("http://localhost:8091/materiels/"+id).subscribe((result)=>{
             console.log(result);
@@ -32,16 +68,36 @@ export class MaterielsComponent implements OnInit {
       return this.mat;
   }
 
-  createQr2(){
-    //this.material = this.singlematerial(id)
-    //console.log(this.material)
-    this.item = [{
-      'idMateriel': "4",
-      'nameMateriel': "name"
-    }]
-     this.qrInfo = JSON.stringify(this.item);
-     return this.qrInfo;
+  save(form: NgForm){
+    var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+
+          var raw = JSON.stringify(form.value);
+          
+          fetch("http://0.0.0.0:8091/materiels",
+          {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+          })
+          .then(
+            response=>{ 
+              // on sauvegarde le token si tous se passe bien 
+      
+              if (response.status==200){
+                response.text().then(
+                    result=>{console.log(result)
+                    //this.router.navigate(['users'])
+            })   
+            }else{
+              this.router.navigate(['materiels'])
+                
+            }
+          })
+            .catch(error=>console.log('error',error))
   }
+
 
   createQr(idMateriel : any, categoryMateriel: any, nameMateriel: any, salleMateriel: any){
     //this.material = this.singlematerial(id)
@@ -55,6 +111,7 @@ export class MaterielsComponent implements OnInit {
      this.qrInfo = JSON.stringify(this.item);
      return this.qrInfo;
   }
+
 
   remove(id : any){
     var myHeaders = new Headers();

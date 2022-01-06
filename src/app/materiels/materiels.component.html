@@ -1,6 +1,8 @@
 <header>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
+<body>
+    <h1>Liste des matériels</h1>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -34,5 +36,35 @@
             </tr>
         </tbody>
     </table>
-
 </div>
+<!--
+<h1>Ajouter une nouveau matériel</h1>
+<div class="row">
+    <div class="col-sm-30"  col-sm-offset-8>
+        <form  (ngSubmit)="save(f)" #f="ngForm">
+            <div ng-app="nameCategory" ng-controller="myCtrl">
+                <label for="nameCategory">Catégorie</label>
+                <select ng-model="selectedCategories" ng-options="x for x in categories">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nameMateriel">Nom </label>
+                <input type="text" id="nameMateriel" class="form-control" name="nameMateriel" ngModel required>
+            </div>
+            <div ng-app="salleInitial" ng-controller="myCtrl">
+                <label for="salleInitial">Salle</label>
+                <select ng-model="selectedSalles" ng-options="x for x in salles">
+                </select>
+            </div>
+            <div class="col-lg-9  content-wrapper" style="height: 350px">
+                <div style="margin: 0px auto; width:250px; padding-top: 40px;">
+                     <ejs-dropdownlist id='salles' #sample [dataSource]='sallesData' (change)='onChange($event)'
+                      [fields]='fields' [placeholder]='waterMark' [popupHeight]='height'></ejs-dropdownlist>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Matériel</button>
+        </form>
+    </div>
+</div>
+-->
+</body>

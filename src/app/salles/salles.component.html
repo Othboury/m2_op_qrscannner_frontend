@@ -1,6 +1,9 @@
 <header>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
+
+<body>
+<h1>Liste des salles</h1>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -25,3 +28,25 @@
         </tbody>
     </table>
 </div>
+
+<h1>Ajouter une nouvelle salle</h1>
+<div class="row">
+    <div class="col-sm-30"  col-sm-offset-8>
+        <form  (ngSubmit)="save(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="buildingSalle">Bâtiment</label>
+                <input type="text" id="buildingSalle" class="form-control" name="buildingSalle" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="floorSalle">Etage</label>
+                <input type="number" id="floorSalle" class="form-control" name="floorSalle" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="nameSalle">Nom</label>
+                <input type="text" id="nameSalle" class="form-control" name="nameSalle" ngModel required>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter salle</button>
+        </form>
+    </div>
+</div>
+</body>

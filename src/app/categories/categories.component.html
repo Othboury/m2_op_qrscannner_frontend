@@ -1,6 +1,9 @@
 <header>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
+<body>
+
+    <h1>Liste des catégories</h1>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -21,3 +24,17 @@
         </tbody>
     </table>
 </div>
+
+<h1>Ajouter une nouvelle catégorie</h1>
+<div class="row">
+    <div class="col-sm-30"  col-sm-offset-8>
+        <form  (ngSubmit)="save(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="nameCategory">Name of Category</label>
+                <input type="text" id="nameCategory" class="form-control" name="nameCategory" ngModel required>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create Category</button>
+        </form>
+    </div>
+</div>
+</body>
