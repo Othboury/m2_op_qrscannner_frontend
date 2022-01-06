@@ -12,11 +12,11 @@ import { UsersComponent } from './users/users.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { SallesComponent } from './salles/salles.component';
-import { BuildingsComponent } from './buildings/buildings.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { MaterielsComponent } from './materiels/materiels.component';
 import { JournalsComponent } from './journals/journals.component';
 import { HistScanComponent } from './hist-scan/hist-scan.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 const appRoutes  : Routes = [
   {path : "users" ,canActivate :[AuthGuard]  , component : UsersComponent } , 
@@ -24,11 +24,11 @@ const appRoutes  : Routes = [
   {path : "auth" , component : AuthComponent } , 
   {path : "" , component : AuthComponent } , 
   {path : "scan" , component : ScanComponent },
-  {path : "salles" , component : SallesComponent },
-  {path : "hist-scan" , component : HistScanComponent } ,
-  {path : "categories" , component : CategoriesComponent }, 
+  {path : "salles" , canActivate :[AuthGuard] , component : SallesComponent },
+  {path : "hist-scan" , canActivate :[AuthGuard] , component : HistScanComponent } ,
+  {path : "categories" , canActivate :[AuthGuard] , component : CategoriesComponent }, 
   {path : "materiels" , component : MaterielsComponent } ,
-  {path : "journals" , component : JournalsComponent } 
+  {path : "journals" , canActivate :[AuthGuard] ,  component : JournalsComponent } 
 ]
 
 @NgModule({
@@ -39,7 +39,6 @@ const appRoutes  : Routes = [
     SignUpComponent,
     UsersComponent,
     SallesComponent,
-    BuildingsComponent,
     CategoriesComponent,
     MaterielsComponent,
     JournalsComponent,
@@ -50,7 +49,8 @@ const appRoutes  : Routes = [
     ZXingScannerModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    QRCodeModule
   ],
   providers: [HttpClientModule,AuthService , AuthGuard ],
   bootstrap: [AppComponent]

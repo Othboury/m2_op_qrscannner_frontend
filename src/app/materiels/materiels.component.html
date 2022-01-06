@@ -7,30 +7,32 @@
             <tr>
                 <th>Id Materiel</th>
                 <th>Catégorie</th>
-                <th>Code Barre </th>
                 <th>Nom matériel </th>
                 <th>Salle </th>
                 <th>Good Place </th>
                 <th>Moved </th>
+                <th>Code Barre </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let materiel of materiels">
                 <td>{{materiel.idMateriel}}</td>
                 <td>{{materiel.idCategory.nameCategory}}</td>
-                <td>{{materiel.codeBarreMateriel}}</td>
                 <td>{{materiel.nameMateriel}}</td>
                 <td>{{materiel.salleInitial.nameSalle}}</td>
                 <td>{{materiel.inGoodPlace}}</td>
                 <td>{{materiel.moved}}</td>
+                <td><qr-code [value]="createQr(materiel.idMateriel,materiel.idCategory.nameCategory, 
+                    materiel.nameMateriel, materiel.salleInitial.nameSalle)"></qr-code> </td>
                 <td>
                     <button class="btn-default" id="move" (click)="moved(materiel.idMateriel)">Déplacer</button>
                 </td>
                 <td>
-                    <a href="#!update/{{ materiel.idMateriel }}" class="btn btn-default btn-sm">Modifier</a>
+                    <a href="#!update/{{materiel.idMateriel}}" class="btn btn-default btn-sm">Modifier</a>
                     <button class="btn-danger" id="remove" (click)="remove(materiel.idMateriel)">Supprimer</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
 </div>

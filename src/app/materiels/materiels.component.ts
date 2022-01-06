@@ -10,6 +10,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class MaterielsComponent implements OnInit {
   materiels :any = [] ; 
+  mat :any = [];
+  material : any = [];
+  item :any = []
+  qrInfo:string ="";
 
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
@@ -18,6 +22,38 @@ export class MaterielsComponent implements OnInit {
             console.log(res);
             this.materiels = res ; 
         });
+  }
+
+  singlematerial(id: any){
+    this.httpClient.get<any>("http://localhost:8091/materiels/"+id).subscribe((result)=>{
+            console.log(result);
+            this.mat = result ; 
+        });
+      return this.mat;
+  }
+
+  createQr2(){
+    //this.material = this.singlematerial(id)
+    //console.log(this.material)
+    this.item = [{
+      'idMateriel': "4",
+      'nameMateriel': "name"
+    }]
+     this.qrInfo = JSON.stringify(this.item);
+     return this.qrInfo;
+  }
+
+  createQr(idMateriel : any, categoryMateriel: any, nameMateriel: any, salleMateriel: any){
+    //this.material = this.singlematerial(id)
+    console.log(this.material)
+    this.item = [{
+      'ID': idMateriel,
+      'categorie': categoryMateriel,
+      'name': nameMateriel,
+      'salle': salleMateriel
+    }]
+     this.qrInfo = JSON.stringify(this.item);
+     return this.qrInfo;
   }
 
   remove(id : any){
@@ -36,13 +72,10 @@ export class MaterielsComponent implements OnInit {
                 alert("Le matériel a été supprimé de la base de données ")
       })   
       }else{
-   
         this.router.navigate(['auth'])
-      
       }
     })
       .catch(error=>{console.log('error',error); 
-
     })
 
 }

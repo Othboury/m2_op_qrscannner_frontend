@@ -14,7 +14,8 @@ export class ScanComponent implements OnInit {
 
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 
   onCodeResult(result:string){
