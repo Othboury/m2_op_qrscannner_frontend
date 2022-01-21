@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
 <body>
-    <h1>Liste des matériels</h1>
+<h1>Liste des matériels</h1>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -21,7 +21,7 @@
                 <td>{{materiel.idMateriel}}</td>
                 <td>{{materiel.idCategory.nameCategory}}</td>
                 <td>{{materiel.nameMateriel}}</td>
-                <td>{{materiel.salleInitial.nameSalle}}</td>
+                <td>{{materiel.salleInitial.idSalle}}</td>
                 <td>{{materiel.inGoodPlace}}</td>
                 <td>{{materiel.moved}}</td>
                 <td><qr-code [value]="createQr(materiel.idMateriel,materiel.idCategory.nameCategory, 

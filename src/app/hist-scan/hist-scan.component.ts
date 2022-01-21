@@ -48,5 +48,4 @@ export class HistScanComponent implements OnInit {
 
 }
 
-
 }

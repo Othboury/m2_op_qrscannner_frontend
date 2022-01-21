@@ -18,7 +18,8 @@ import { JournalsComponent } from './journals/journals.component';
 import { HistScanComponent } from './hist-scan/hist-scan.component';
 import { QRCodeModule } from 'angular2-qrcode';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import {PopupModule} from 'ng2-opd-popup'
 
 const appRoutes  : Routes = [
   {path : "users" ,canActivate :[AuthGuard]  , component : UsersComponent } , 
@@ -53,7 +54,9 @@ const appRoutes  : Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     QRCodeModule,
-    DropDownListModule
+    DropDownListModule,
+    NgbModule,
+    //PopupModule.forRoot()
   ],
   providers: [HttpClientModule,AuthService , AuthGuard ],
   bootstrap: [AppComponent]

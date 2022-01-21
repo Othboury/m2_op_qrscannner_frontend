@@ -1,5 +1,27 @@
+ <div class="modal-body" *ngIf="salleNum==''">
+    <form>
+      <div class="form-group">
+        <label for="salleIn">Salle</label>
+        <div class="input-group">
+          <input [(ngModel)]="salleNum">
+        </div>
+      </div>
+    </form>
+  </div>
+
+<div *ngIf="salleNum!=''">
 <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
-<p>
+
+    <small>Vous êtes dans la salle: </small>
+    <strong>{{salleNum}}</strong><br>
     <small>Les données du matériel scanné: </small>
-    <strong>{{scanResult}}</strong>
-</p>
+    <strong><pre>{{scanResult | json}}</pre></strong><br>
+    <small>{{salle}}</small>
+    <div *ngIf="scanResult != ''">
+    <div *ngIf="salleNum != salle">
+        <strong>Le matériel n'est pas dans la bonne salle. </strong>
+        <a href="#!update/{{idmat}}" class="btn btn-default btn-sm"> Déplacer le matériel</a>
+    </div>
+    </div>
+
+</div>

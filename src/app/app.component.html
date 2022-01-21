@@ -1,12 +1,18 @@
+
 <header>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </header>
 <nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="auth">Authentification</a> </li>
-      <li nav-item routerLinkActive ="active"> <a  class="nav-link"routerLink="sign-up"> Nouvel utilisateur</a> </li>
-      <li nav-item routerLinkActive ="active"> <a  class="nav-link"routerLink="scan"> Scanner</a> </li>
+      <li nav-item routerLinkActive ="active"> <a  class="nav-link" routerLink="sign-up"> Nouvel utilisateur</a> </li>
+      <li nav-item routerLinkActive ="active"> <a  class="nav-link" routerLink="scan" data-toggle="modal" data-target="#myModal"> Scanner</a> </li>
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="users"> Utilisateurs</a> </li>
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="salles"> Salles</a> </li>
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="categories"> Catégories</a> </li>
@@ -14,6 +20,7 @@
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="journals"> Journaux</a> </li>
       <li nav-item routerLinkActive ="active"> <a class="nav-link" routerLink="hist-scan"> Histo Scan</a> </li>
       <!--button onclick="logout()">Deconnexion</button-->
+      
     </ul>
   </div>
 </nav>
