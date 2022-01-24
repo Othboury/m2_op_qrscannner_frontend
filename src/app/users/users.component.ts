@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://0.0.0.0:8091/users").subscribe((res)=>{
+    this.httpClient.get<any>("https://localhost:8092/gestion/ressources/users").subscribe((res)=>{
             console.log(res);
             this.users = res ; 
         });
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://0.0.0.0:8091/users/"+id, {
+    fetch("https://localhost:8092/gestion/ressources/users"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
@@ -36,8 +36,8 @@ export class UsersComponent implements OnInit {
                 alert("l'utilisateur a été supprimé de la base de données ")
       })   
       }else{
-   
-        this.router.navigate(['auth'])
+  
+        this.router.navigate(['users'])
       
       }
     })

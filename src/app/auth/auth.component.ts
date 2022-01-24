@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Basic "+btoa(email+":"+password));
   
-    fetch("http://0.0.0.0:8091/auth",
+    fetch("https://localhost:8092/gestion/ressources/auth",
     {
             method: 'POST',
             headers: myHeaders,
@@ -53,7 +53,8 @@ export class AuthComponent implements OnInit {
                       result=>{console.log(result)
                       localStorage.setItem('token', result.substring(10,result.length-1))
                       localStorage.setItem('status', 'true')
-                     this.authService.authStatus=true;
+                      localStorage.setItem('currentUser',email)
+                      this.authService.authStatus=true;
                       this.router.navigate(['users'])
               })
               .catch(error=>console.log('error',error))

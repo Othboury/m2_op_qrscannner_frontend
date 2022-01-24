@@ -11,11 +11,12 @@ import { AuthService } from '../auth/auth.service';
 export class HistScanComponent implements OnInit {
 
   scans :any = [] ; 
+  histScanUrl = "https://localhost:8092/gestion/ressources/scans"
 
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/scans").subscribe((res)=>{
+    this.httpClient.get<any>(this.histScanUrl).subscribe((res)=>{
             console.log(res);
             this.scans = res ; 
         });
@@ -24,7 +25,7 @@ export class HistScanComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/scans/"+id, {
+    fetch(this.histScanUrl+"/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'

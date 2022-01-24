@@ -25,18 +25,19 @@ export class MaterielsComponent implements OnInit {
   fields: Object = { text: ',nameSalle', value: 'idSalle' };
   height: string = '220px';
   waterMark: string = 'Selectionner une salle';
+  materielUrl = "https://localhost:8092/gestion/ressources/materiels"
 
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/materiels").subscribe((res)=>{
+    this.httpClient.get<any>(this.materielUrl).subscribe((res)=>{
             console.log(res);
             this.materiels = res ; 
         });
   }
 
   getCat(){
-    this.httpClient.get<any>("http://localhost:8091/categories").subscribe((resCat)=>{
+    this.httpClient.get<any>("https://localhost:8092/gestion/ressources/categories").subscribe((resCat)=>{
       console.log(resCat);
       this.categories = resCat ; 
   });
@@ -44,7 +45,7 @@ export class MaterielsComponent implements OnInit {
   }
 
   getSalles(){
-    this.httpClient.get<any>("http://localhost:8091/salles").subscribe((resSalles)=>{
+    this.httpClient.get<any>("https://localhost:8092/gestion/ressources/salles").subscribe((resSalles)=>{
         console.log(resSalles);
         this.salles = resSalles ; 
     });
@@ -61,7 +62,7 @@ export class MaterielsComponent implements OnInit {
 }
 
   singlematerial(id: any){
-    this.httpClient.get<any>("http://localhost:8091/materiels/"+id).subscribe((result)=>{
+    this.httpClient.get<any>(this.materielUrl+"/"+id).subscribe((result)=>{
             console.log(result);
             this.mat = result ; 
         });
@@ -74,7 +75,7 @@ export class MaterielsComponent implements OnInit {
 
           var raw = JSON.stringify(form.value);
           
-          fetch("http://0.0.0.0:8091/materiels",
+          fetch(this.materielUrl,
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -84,7 +85,6 @@ export class MaterielsComponent implements OnInit {
           .then(
             response=>{ 
               // on sauvegarde le token si tous se passe bien 
-      
               if (response.status==200){
                 response.text().then(
                     result=>{console.log(result)
@@ -100,7 +100,6 @@ export class MaterielsComponent implements OnInit {
 
 
   createQr(idMateriel : any, categoryMateriel: any, nameMateriel: any, salleMateriel: any){
-    //this.material = this.singlematerial(id)
     console.log(this.material)
     this.item = [{
       'ID': idMateriel,
@@ -116,7 +115,7 @@ export class MaterielsComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/materiels/"+id, {
+    fetch(this.materielUrl+"/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
@@ -129,7 +128,7 @@ export class MaterielsComponent implements OnInit {
                 alert("Le matériel a été supprimé de la base de données ")
       })   
       }else{
-        this.router.navigate(['auth'])
+        this.router.navigate(['materiels'])
       }
     })
       .catch(error=>{console.log('error',error); 
@@ -141,7 +140,7 @@ moved(id : any){
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
 
-  fetch("http://localhost:8091/materiels/"+id, {
+  fetch(this.materielUrl+"/"+id, {
     method: 'PUT',
     headers: myHeaders,
     redirect: 'follow'
@@ -155,7 +154,7 @@ moved(id : any){
     })   
     }else{
  
-      this.router.navigate(['auth'])
+      this.router.navigate(['materiels'])
     
     }
   })

@@ -16,19 +16,20 @@ export class SallesComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/salles").subscribe((res)=>{
+    this.httpClient.get<any>("https://localhost:8092/gestion/ressources/salles").subscribe((res)=>{
             console.log(res);
             this.salles = res ; 
         });
   }
 
   save(form: NgForm){
+    
     var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
 
           var raw = JSON.stringify(form.value);
           
-          fetch("http://0.0.0.0:8091/salles",
+          fetch("https://localhost:8092/gestion/ressources/salles",
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -55,7 +56,7 @@ export class SallesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/salles/"+id, {
+    fetch("https://localhost:8092/gestion/ressources/users"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
@@ -69,7 +70,7 @@ export class SallesComponent implements OnInit {
       })   
       }else{
    
-        this.router.navigate(['auth'])
+        this.router.navigate(['salles'])
       
       }
     })

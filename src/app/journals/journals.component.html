@@ -7,7 +7,7 @@
             <tr>
                 <th>Id Journal</th>
                 <th>Date</th>
-                <th>Utilisateur </th>
+                <th>Utilisateur</th>
             </tr>
         </thead>
         <tbody>
@@ -22,4 +22,12 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-30"  col-sm-offset-8>
+        <form  (ngSubmit)="save(f)" #f="ngForm">
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Créer un nouveau journal</button>
+        </form>
+    </div>
 </div>

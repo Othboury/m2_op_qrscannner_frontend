@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
           var raw = JSON.stringify(form.value);
           
           
-          fetch("http://0.0.0.0:8091/users",
+          fetch("https://localhost:8092/gestion/ressources/users",
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
                     //this.router.navigate(['users'])
             })   
             }else{
-              this.router.navigate(['auth'])
+              this.router.navigate(['sign-up'])
                 
             }
           })
