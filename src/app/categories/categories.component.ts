@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import{ GlobalComponent } from '../global-component';
 
 @Component({
   selector: 'app-categories',
@@ -16,7 +17,7 @@ export class CategoriesComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/categories").subscribe((res)=>{
+    this.httpClient.get<any>(GlobalComponent.path+"categories").subscribe((res)=>{
             console.log(res);
             this.categories = res ; 
         });
@@ -28,7 +29,7 @@ export class CategoriesComponent implements OnInit {
 
           var raw = JSON.stringify(form.value);
           
-          fetch("http://0.0.0.0:8091/categories",
+          fetch(GlobalComponent.path+"categories",
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -55,7 +56,7 @@ export class CategoriesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/categories/"+id, {
+    fetch(GlobalComponent.path+"categories?id="+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'

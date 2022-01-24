@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import{ GlobalComponent } from '../global-component';
 
 @Component({
   selector: 'app-salles',
@@ -16,7 +17,7 @@ export class SallesComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/salles").subscribe((res)=>{
+    this.httpClient.get<any>(GlobalComponent.path+"salles").subscribe((res)=>{
             console.log(res);
             this.salles = res ; 
         });
@@ -28,7 +29,7 @@ export class SallesComponent implements OnInit {
 
           var raw = JSON.stringify(form.value);
           
-          fetch("http://0.0.0.0:8091/salles",
+          fetch("https://localhost:8092/gestion/resources/salles",
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -55,7 +56,7 @@ export class SallesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/salles/"+id, {
+    fetch("https://localhost:8092/gestion/resources/salles/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
