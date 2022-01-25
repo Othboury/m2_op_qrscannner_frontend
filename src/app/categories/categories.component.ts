@@ -56,7 +56,7 @@ export class CategoriesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch(GlobalComponent.path+"categories?id="+id, {
+    fetch(GlobalComponent.path+"categories/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'

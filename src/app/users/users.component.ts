@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import {environment} from 'src/environments/environment'
+import{ GlobalComponent } from '../global-component';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,7 @@ export class UsersComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("https://localhost:8092/gestion/resources/users").subscribe((res)=>{
+    this.httpClient.get<any>(GlobalComponent.path+"users").subscribe((res)=>{
             console.log(res);
             this.users = res ; 
         });
@@ -23,7 +24,7 @@ export class UsersComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("https://localhost:8092/gestion/resources/users/"+id, {
+    fetch(GlobalComponent.path+"users/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'

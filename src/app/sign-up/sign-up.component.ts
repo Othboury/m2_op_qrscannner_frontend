@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import{ GlobalComponent } from '../global-component';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +24,7 @@ export class SignUpComponent implements OnInit {
           var raw = JSON.stringify(form.value);
           
           
-          fetch("http://0.0.0.0:8091/users",
+          fetch(GlobalComponent.path+"users",
           {
                   method: 'POST',
                   headers: myHeaders,

@@ -56,7 +56,7 @@ export class SallesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch(GlobalComponent.path+"salles?id="+id,{
+    fetch(GlobalComponent.path+"salles/"+id,{
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
