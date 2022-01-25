@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-
+import{ GlobalComponent } from '../global-component';
 @Component({
   selector: 'app-journals',
   templateUrl: './journals.component.html',
@@ -15,7 +15,7 @@ export class JournalsComponent implements OnInit {
   constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>("http://localhost:8091/journals").subscribe((res)=>{
+    this.httpClient.get<any>(GlobalComponent.path+"journals").subscribe((res)=>{
             console.log(res);
             this.journals = res ; 
         });
@@ -24,7 +24,7 @@ export class JournalsComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("http://localhost:8091/journals/"+id, {
+    fetch(GlobalComponent.path+"journals/"+id, {
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
@@ -47,5 +47,4 @@ export class JournalsComponent implements OnInit {
     })
 
 }
-
 }

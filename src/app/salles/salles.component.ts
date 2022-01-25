@@ -29,7 +29,7 @@ export class SallesComponent implements OnInit {
 
           var raw = JSON.stringify(form.value);
           
-          fetch("https://localhost:8092/gestion/resources/salles",
+          fetch(GlobalComponent.path+"salles",
           {
                   method: 'POST',
                   headers: myHeaders,
@@ -56,7 +56,7 @@ export class SallesComponent implements OnInit {
   remove(id : any){
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+localStorage.getItem('token'));
-    fetch("https://localhost:8092/gestion/resources/salles/"+id, {
+    fetch(GlobalComponent.path+"salles?id="+id,{
       method: 'DELETE',
       headers: myHeaders,
       redirect: 'follow'
