@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
@@ -26,14 +26,22 @@ export class MaterielsComponent implements OnInit {
   height: string = '220px';
   waterMark: string = 'Selectionner une salle';
   materielUrl = "https://localhost:8092/gestion/ressources/materiels"
+  materielForm!: FormGroup;
 
-  constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router) { }
+  constructor(private authService  : AuthService  , private httpClient  : HttpClient ,private router : Router, private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.httpClient.get<any>(this.materielUrl).subscribe((res)=>{
             console.log(res);
             this.materiels = res ; 
         });
+
+        this.materielForm = this.fb.group({
+          sallesData: [null]
+        });
+
+        this.getSalles();
+        this.getCat();
   }
 
   getCat(){
@@ -41,7 +49,7 @@ export class MaterielsComponent implements OnInit {
       console.log(resCat);
       this.categories = resCat ; 
   });
-  return this.categories;
+  //return this.categories;
   }
 
   getSalles(){
@@ -49,10 +57,10 @@ export class MaterielsComponent implements OnInit {
         console.log(resSalles);
         this.salles = resSalles ; 
     });
-    return this.salles;
+    //return this.salles;
   }
 
-  sallesData: Object[] =this.getSalles() ;
+ // sallesData: Object[] =this.getSalles() ;
 
   public onChange(args: any): void {
     this.val = document.getElementById('value');
@@ -69,11 +77,11 @@ export class MaterielsComponent implements OnInit {
       return this.mat;
   }
 
-  save(form: NgForm){
+  save(){
     var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
 
-          var raw = JSON.stringify(form.value);
+          var raw = JSON.stringify(this.materielForm.value);
           
           fetch(this.materielUrl,
           {

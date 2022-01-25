@@ -1,6 +1,7 @@
 <header>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
+<h1>Historique des scans</h1><br><br>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -20,8 +21,8 @@
                 <td>{{scan.idJournal.idJournal}}</td>
                 <td>{{scan.idSalle.nameSalle}}</td>
                 <td>
-                    <a href="#!update/{{ scan.idScan }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(scan.idScan)">Delete</button>
+                    <a href="#!update/{{ scan.idScan }}" class="btn btn-default btn-sm">Modifier</a>
+                    <button class="btn-danger" id="remove" (click)="remove(scan.idScan)">Supprimer</button>
                 </td>
             </tr>
         </tbody>

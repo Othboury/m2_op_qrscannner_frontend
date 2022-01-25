@@ -1,6 +1,7 @@
 <header>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
+  <h1>Liste des utilisateurs</h1><br><br>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -19,8 +20,8 @@
                 <td>{{user.lnameUser}}</td>
                 <td>{{user.emailUser}}</td>
                 <td>
-                    <a href="#!update/{{ user.idUser }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(user.idUset)">Delete</button>
+                    <a href="#!update/{{ user.idUser }}" class="btn btn-default btn-sm">Modifier</a>
+                    <button class="btn-danger" id="remove" (click)="remove(user.idUset)">Supprimer</button>
                 </td>
             </tr>
         </tbody>

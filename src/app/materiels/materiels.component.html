@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </header>
 <body>
-<h1>Liste des matériels</h1>
+<h1>Liste des matériels</h1><br><br>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -25,7 +25,7 @@
                 <td>{{materiel.inGoodPlace}}</td>
                 <td>{{materiel.moved}}</td>
                 <td><qr-code [value]="createQr(materiel.idMateriel,materiel.idCategory.nameCategory, 
-                    materiel.nameMateriel, materiel.salleInitial.nameSalle)"></qr-code> </td>
+                    materiel.nameMateriel, materiel.salleInitial.idSalle)"></qr-code> </td>
                 <td>
                     <button class="btn-default" id="move" (click)="moved(materiel.idMateriel)">Déplacer</button>
                 </td>
@@ -36,35 +36,33 @@
             </tr>
         </tbody>
     </table>
-</div>
-<!--
-<h1>Ajouter une nouveau matériel</h1>
+</div><br><br>
+
+<h1>Ajouter une nouveau matériel</h1><br><br>
 <div class="row">
     <div class="col-sm-30"  col-sm-offset-8>
-        <form  (ngSubmit)="save(f)" #f="ngForm">
-            <div ng-app="nameCategory" ng-controller="myCtrl">
-                <label for="nameCategory">Catégorie</label>
-                <select ng-model="selectedCategories" ng-options="x for x in categories">
-                </select>
+        <form [formGroup]="materielForm" (ngSubmit)="save()">
+            <div class="form-group">
+                <input type="text" id="nameMateriel" class="form-control" name="nameMateriel" placeholder="Nom" ngModel required>
             </div>
             <div class="form-group">
-                <label for="nameMateriel">Nom </label>
-                <input type="text" id="nameMateriel" class="form-control" name="nameMateriel" ngModel required>
+            <div ng-app="nameCategory" ng-controller="myCtrl">
+                <select formControlName="categories">
+                    <option [ngValue]="null" disabled selected>Category</option><br>
+                    <option *ngFor="let category of categories" [ngValue]="category.idCategory" ngModel required>{{category.nameCategory}}</option>
+                  </select>
             </div>
+        </div>
+        <div class="form-group">
             <div ng-app="salleInitial" ng-controller="myCtrl">
-                <label for="salleInitial">Salle</label>
-                <select ng-model="selectedSalles" ng-options="x for x in salles">
-                </select>
+                <select formControlName="salles">
+                    <option [ngValue]="null" disabled selected>Salle</option><br>
+                    <option *ngFor="let salle of salles" [ngValue]="salle.idSalle"ngModel required>{{salle.nameSalle}}</option>
+                  </select>
             </div>
-            <div class="col-lg-9  content-wrapper" style="height: 350px">
-                <div style="margin: 0px auto; width:250px; padding-top: 40px;">
-                     <ejs-dropdownlist id='salles' #sample [dataSource]='sallesData' (change)='onChange($event)'
-                      [fields]='fields' [placeholder]='waterMark' [popupHeight]='height'></ejs-dropdownlist>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Matériel</button>
+        </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
         </form>
     </div>
 </div>
--->
 </body>

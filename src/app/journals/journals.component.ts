@@ -26,7 +26,6 @@ export class JournalsComponent implements OnInit {
 
   save(form: NgForm){
     var usernameEmail = localStorage.getItem('currentUser');
-    //var todayDate: any = this.datePipe.transform(todayDate, 'yyyy-MM-dd');
     var myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
 

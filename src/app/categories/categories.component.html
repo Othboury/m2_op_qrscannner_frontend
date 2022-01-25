@@ -3,7 +3,7 @@
   </header>
 <body>
 
-    <h1>Liste des catégories</h1>
+    <h1>Liste des catégories</h1><br><br>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -17,23 +17,22 @@
                 <td>{{category.idCategory}}</td>
                 <td>{{category.nameCategory}}</td>
                 <td>
-                    <a href="#!update/{{ category.id }}" class="btn btn-default btn-sm">Edit</a>
-                    <button class="btn-danger" id="remove" (click)="remove(category.id)">Delete</button>
+                    <a href="#!update/{{ category.id }}" class="btn btn-default btn-sm">Modifier</a>
+                    <button class="btn-danger" id="remove" (click)="remove(category.id)">Supprimer</button>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
+</div><br><br>
 
-<h1>Ajouter une nouvelle catégorie</h1>
+<h1>Ajouter une nouvelle catégorie</h1><br><br>
 <div class="row">
     <div class="col-sm-30"  col-sm-offset-8>
         <form  (ngSubmit)="save(f)" #f="ngForm">
             <div class="form-group">
-                <label for="nameCategory">Name of Category</label>
-                <input type="text" id="nameCategory" class="form-control" name="nameCategory" ngModel required>
+                <input type="text" id="nameCategory" class="form-control" name="nameCategory" placeholder="Nom de la catégorie" ngModel required>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create Category</button>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Créer</button>
         </form>
     </div>
 </div>

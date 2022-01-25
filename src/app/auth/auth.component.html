@@ -1,17 +1,18 @@
+
+<img src="./assets/imgs/logoUnivTln.png" alt="Université de Toulon"  width="300" height="200"><br><br>
 <div class="row">
     <h1>Application de gestion des materiels</h1>
-</div>
+</div><br><br>
+
 
 <div class="row">
     <div class="col-sm-30"  col-sm-offset-8>
         <form  (ngSubmit)="login(f)" #f="ngForm">
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" class="form-control" name="email" ngModel required>
+                <input type="text" id="email" class="form-control" name="email" placeholder="Email" ngModel required>
             </div>
             <div class="form-group">
-                <label for="password">password</label>
-                <input type="password" id="password" class="form-control" name="password" ngModel required>
+                <input type="password" id="password" class="form-control" name="password" placeholder="Mot de passe" ngModel required>
             </div>
             <button type="submit" class="btn btn-primary">Connexion</button>
         </form>

@@ -19,6 +19,8 @@ import { HistScanComponent } from './hist-scan/hist-scan.component';
 import { QRCodeModule } from 'angular2-qrcode';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+
 //import {PopupModule} from 'ng2-opd-popup'
 
 const appRoutes  : Routes = [
@@ -26,12 +28,12 @@ const appRoutes  : Routes = [
   {path : "sign-up" , component : SignUpComponent } , 
   {path : "auth" , component : AuthComponent } , 
   {path : "" , component : AuthComponent } , 
-  {path : "scan" , component : ScanComponent },
-  {path : "salles" , component : SallesComponent },
-  {path : "hist-scan"  , component : HistScanComponent } ,
-  {path : "categories" , component : CategoriesComponent }, 
-  {path : "materiels" , component : MaterielsComponent } ,
-  {path : "journals"  ,  component : JournalsComponent } 
+  {path : "scan" , canActivate :[AuthGuard]  ,  component : ScanComponent },
+  {path : "salles" , canActivate :[AuthGuard]  , component : SallesComponent },
+  {path : "hist-scan"  , canActivate :[AuthGuard]  , component : HistScanComponent } ,
+  {path : "categories" , canActivate :[AuthGuard]  , component : CategoriesComponent }, 
+  {path : "materiels" , canActivate :[AuthGuard]  , component : MaterielsComponent } ,
+  {path : "journals"  , canActivate :[AuthGuard]  ,  component : JournalsComponent } 
 ]
 
 @NgModule({
@@ -56,6 +58,7 @@ const appRoutes  : Routes = [
     QRCodeModule,
     DropDownListModule,
     NgbModule,
+    ReactiveFormsModule
     //PopupModule.forRoot()
   ],
   providers: [HttpClientModule,AuthService , AuthGuard ],
